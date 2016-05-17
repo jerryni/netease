@@ -65,11 +65,13 @@
     };
 
     util.checkboxHelper = function(selectAllEl, listCon) {
-        var chks = listCon.querySelectorAll('input[type=checkbox]'),
-            len = chks.length,
-            i;
+        
 
         selectAllEl.onclick = function(e) {
+            var chks = listCon.querySelectorAll('input[type=checkbox]'),
+                len = chks.length,
+                i;
+
             for (i = 0; i < len; i++) {
                 chks[i].checked = e.target.checked;
             }
@@ -78,6 +80,8 @@
         //列表选项的检查
         this.addEvent(listCon, 'click', function (e) {
             var tar = e.target,
+                chks = listCon.querySelectorAll('input[type=checkbox]'),
+                len = chks.length,
                 i;
 
             if(tar.type.toUpperCase() === 'CHECKBOX') {

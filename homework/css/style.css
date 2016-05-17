@@ -10,7 +10,8 @@ a,a:hover{color:#21759b;}
 .g-cnt { float: right; width: 795px; padding: 20px;border: solid 1px #bbb;background:#fff; }
 .g-cnt .g-tl { margin-bottom: 20px; font-size: 20px; }
 .g-cnt .g-cntmn { float: left; width: 550px; }
-.g-cnt .g-cntsd { float: right;width: 225px;}
+.g-cnt .g-cntsd { float: right;width: 205px;background:#fafafa;padding: 10px;}
+.g-cnt .g-cntsd .title{ font-weight: bold;margin-bottom: 15px;}
 .g-footer {text-align: center;}
 /* 模块: m- */
 .m-barnav { float: left; margin-left: -10px; }
@@ -48,15 +49,14 @@ a,a:hover{color:#21759b;}
 .m-postlist .operations .more ul li { display: block; padding: 4px; width:47px; }
 .m-postlist .operations .more ul li:hover {cursor: pointer;background:#ececec;}
 
-
 .m-postlist .info {margin-top: 5px;}
 .m-postlist .info > span{ margin-left: 20px; }
 .m-selectall {padding: 10px 0 10px 15px;}
 .m-selectall input {margin-right: 5px;}
-.m-scrolllist { background: #fafafa; padding: 10px;}
-.m-scrolllist .title{ font-weight: bold;margin-bottom: 15px;}
-.m-scrolllist ul { padding: 0 10px; }
-.m-scrolllist ul li{ margin-bottom: 10px;}
+.m-scrolllist { position: relative;height: 250px;overflow:hidden;}
+.m-scrolllist ul { position: absolute;left: 0;top:0;padding: 0 10px; transition: 50s;-webkit-transform: translate(0,-100px);}
+/* .m-scrolllist ul:hover{-webkit-animation-play-state: paused; -moz-animation-play-state: paused; -o-animation-play-state: paused; animation-play-state: paused;} */
+.m-scrolllist ul li{ margin-bottom: 10px;width: 190px;}
 .m-scrolllist ul li img{ float: left; width: 40px;height: 40px;}
 .m-scrolllist ul li .name{ margin-left: 45px;padding-top: 5px}
 .m-scrolllist ul li .description{ margin: 5px 0 0 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
