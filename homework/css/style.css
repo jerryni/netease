@@ -1,0 +1,103 @@
+/* 统一处理: 如背景图, 清除浮动*/
+body { background: #f7f7f7; }
+a,a:hover{color:#21759b;}
+.u-icon {display: inline-block;width: 17px;background:url(../images/sprites.png);margin: 0 2px;}
+/* 布局: .g- */
+.g-bar { height: 27px; width: 100%; background: #f9f9f9 linear-gradient(to bottom, #fefefe, #f6f6f6);border-top:1px solid #bbb;border-bottom:1px solid #bbb;}
+.g-hd { height: 69px; width: 100%; background: #ddd linear-gradient(to bottom, #e4e4e4, #d7d7d7); border-bottom:1px solid #bbb;}
+.g-bd { margin-top: 10px;}
+.g-sd { float: left;width: 145px; }
+.g-cnt { float: right; width: 795px; padding: 20px;border: solid 1px #bbb;background:#fff; }
+.g-cnt .g-tl { margin-bottom: 20px; font-size: 20px; }
+.g-cnt .g-cntmn { float: left; width: 550px; }
+.g-cnt .g-cntsd { float: right;width: 225px;}
+.g-footer {text-align: center;}
+/* 模块: m- */
+.m-barnav { float: left; margin-left: -10px; }
+.m-barnav li{ float: left; margin-left: 10px;padding: 7px 5px;}
+.m-barnav li:hover{cursor: pointer;background:#969696;color:#fff;}
+.m-usernav { float: right; height:27px; line-height:27px;color:#666;}
+.m-userinfo { padding-top: 5px;}
+.m-userinfo .avatar { float: left; width: 50px; height:50px; }
+.m-userinfo .greet { margin-left: 70px; height: 28px; line-height: 28px;font-size: 18px;color: #7d7d7d; }
+.m-userinfo .uploadavatar { margin-left: 20px; }
+.m-slidenav {  border-radius: 3px; margin-bottom: 20px; border: 1px solid #bbb;}
+.m-slidenav .navtitle{ position: relative; border-bottom: 1px solid #bbb;padding: 7px 0 7px 30px; font-weight: bold;color: #333; background:  #e0e0e0 linear-gradient(to top, #e0e0e0, #eee);}
+.m-slidenav .navtitle i{ position: absolute; left: 8px; top:5px;}
+.m-slidenav .navmn{ background: #fff;}
+.m-slidenav .navmn li { padding: 7px 0 7px 30px;}
+.m-slidenav .navmn li:hover { cursor: pointer; background-color: #f8f8f8;}
+.m-slidenav .navmn li.current { background-color: #ececec;}
+.m-tabs { height:26px; margin-bottom: 13px;border-bottom: 1px solid #ddd; border-left: 1px solid #ddd;}
+.m-tabs li{ float: left; width: 90px;height:25px;line-height:25px;text-align: center;background:#f7f7f7;border: 1px solid #ddd; border-left: none;}
+.m-tabs li:hover { cursor: pointer; background-color: #fff;}
+.m-tabs li.current{background:#fff; border-bottom-color: #fff;}
+.m-tabs li.current a{color: #000;}
+.m-form {background:#ececec;padding:10px;margin-bottom: 10px}
+.m-form input.formtitle {box-sizing: border-box; padding-left: 12px; border: 0;display: block;width:100%; height: 23px;line-height:23px; background: #f8f8f8;margin-bottom: 5px;}
+.m-form textarea.formcnt {box-sizing: border-box; padding: 10px;margin-bottom: 5px;width: 100%;display: block;border:#ececec 1px solid;}
+.m-postlist {}
+.m-postlist >li {padding: 8px 0 8px 20px; border-bottom: 1px dotted #d8e0e5; }
+.m-postlist >li input {margin-right: 5px;}
+.m-postlist .operations {float: right;}
+.m-postlist .operations .more{position: relative; top: -4px; float: right; width: 47px; padding: 4px; margin-left: 10px; border: 1px solid #fff; border-bottom: none;}
+.m-postlist .operations .more>a {cursor: default;}
+.m-postlist .operations .more:hover{ border-color:#c8d9e3;}
+.m-postlist .operations .more:hover ul{ display: block; }
+.m-postlist .operations .more ul {display: none;position: absolute; right: -1px; top: 100%; border: 1px solid #c8d9e3; border-top: none; background: #fff; padding-bottom: 5px; z-index: 10;}
+.m-postlist .operations .more ul li { display: block; padding: 4px; width:47px; }
+.m-postlist .operations .more ul li:hover {cursor: pointer;background:#ececec;}
+
+
+.m-postlist .info {margin-top: 5px;}
+.m-postlist .info > span{ margin-left: 20px; }
+.m-selectall {padding: 10px 0 10px 15px;}
+.m-selectall input {margin-right: 5px;}
+.m-scrolllist { background: #fafafa; padding: 10px;}
+.m-scrolllist .title{ font-weight: bold;margin-bottom: 15px;}
+.m-scrolllist ul { padding: 0 10px; }
+.m-scrolllist ul li{ margin-bottom: 10px;}
+.m-scrolllist ul li img{ float: left; width: 40px;height: 40px;}
+.m-scrolllist ul li .name{ margin-left: 45px;padding-top: 5px}
+.m-scrolllist ul li .description{ margin: 5px 0 0 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+
+.m-dropdown {position: relative;z-index:10;}
+.m-dropdown .menu {position: absolute;left:0;top:100%;width: 60px;background:#fff;border:1px solid #ccc;display: none;}
+.m-dropdown .menu span{display: inline-block;width: 100%;text-indent: 5px; padding: 8px 0;color:#666;}
+.m-dropdown .menu span:hover{background:#979797;color:#fff;}
+.m-dropdown .menu i.divider{  border-top: 1px solid #ccc; width: 50px; display: inline-block; margin-left: 5px;}
+.m-dropdown:hover .menu {display: block;}
+.m-dropdown:hover .u-arrowdown {position: relative;border-top-color: transparent; border-bottom-color: #fff; top: -3px;}
+.m-footer {margin:20px;color:#7b7b7b;}
+.m-footer a{color:#7b7b7b;}
+.m-footer a:before{  content: '-'; display: inline; vertical-align: middle; margin: 0 9px 0 5px; color: #ddd;}
+.m-footer a:first-child:before{content: '';}
+.m-footer p{margin-top: 20px;text-align: center; }
+/* 元件: u- */
+.u-btn {height: 22px;padding:5px 10px; border: 1px solid #b4b4b4; cursor: pointer; color: #515151;background: #fefefe linear-gradient(to bottom, #fdfdfd, #e1e1e1);border-radius: 3px;} 
+.u-arrowdown {margin-left: 3px;display: inline-block;border: solid 3px transparent; border-top-color: #a8a8a8;}
+.u-arrowup {margin-left: 3px;display: inline-block;border: solid 3px transparent; border-bottom-color: #a8a8a8;}
+.u-icon-email{height:14px;background-position: 0px -17px;vertical-align:sub;}
+.u-icon-usercenter{  height: 17px;background-position: 0px -63px;vertical-align:sub;}
+.u-icon-blognews{height:18px;background-position: 0 0;}
+.u-icon-blogmanage{height:18px;background-position: 0 -46px;}
+.u-icon-service{height:17px;background-position: 0 -30px;}
+.u-icon-rss{height:17px;background-position: 0 -79px;vertical-align:sub;}
+/* 功能: f- */
+.f-cb:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+.f-cb{zoom:1;}
+.f-fl{float:left;}
+.f-fr{float:right;}
+.f-wrap { width:990px; margin: 0 auto; }
+.f-dn {display: none;}
+.f-vb {visibility: hidden;}
+.f-mr5 { margin-right: 5px; }
+.f-ml10{margin-left: 10px;}
+.f-pipenav {margin:0 10px; border-left:1px solid #a4a4a4;}
+/* 皮肤: s- */
+.s-orange{color:#f70;}
+.s-gray{color:#666;}
+.s-gray-1{color:#a4a4a4;}
+/* 状态: z- */
+/* 交互: j- */
+/* 页面样式: p- */

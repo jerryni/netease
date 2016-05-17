@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keyword" content="blog,netease">
+    <meta name="description" content="网易大作业, 简易博客">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>testblog</title>
+</head>
+
+<body>
+    <!-- 
+		hd: head
+		mn: main
+		sd: side
+		ct: center
+		bd: body
+		cnt: content
+	 -->
+    <div class="g-bar">
+        <div class="f-wrap">
+            <ul class="m-barnav">
+                <li class="m-dropdown">
+                	<span>网易</span><i class="u-arrowdown"></i>
+                	<div class="menu">
+                		<span>新闻</span>
+                		<span>微博</span>
+                		<span>邮箱</span>
+                		<span>闪电邮</span>
+                		<span>相册</span>
+                		<span>有道</span>
+                		<span>手机邮</span>
+                		<span>印象派</span>
+                		<span>梦幻人生</span>
+                		<i class="divider"></i>
+                		<span class="more">更多</span>
+                	</div>
+                </li>
+                <li><span>博客</span></li>
+                <li><span>摄影</span></li>
+                <li><span>随便看看</span></li>
+            </ul>
+            <div class="m-usernav">
+                <span class="greet s-gray">中午好，<span class="username">testblog1</span>（<i class="u-icon u-icon-email"></i><span class="count">5</span>）</span>
+                <span class="f-pipenav"></span>
+                <i class="u-icon u-icon-usercenter f-ml10"></i><span>个人中心</span>
+                <span class="f-ml10">消息（<span class="s-orange">1274</span>）</span>
+                <span class="f-ml10">反馈</span>
+                <span class="f-pipenav"></span>
+                <span class="s-gray-1">退出</span>
+            </div>
+        </div>
+    </div>
+    <div class="g-hd">
+        <div class="f-wrap">
+            <div class="m-userinfo">
+                <img src="http://os.blog.163.com/common/ava.s?host=testblog1&b=0&r=-1" alt="avatar" class="avatar">
+                <div class="greet">欢迎！<span class="username">testblog</span></div>
+                <button class="uploadavatar u-btn">传相片</button>
+            </div>
+        </div>
+    </div>
+    <div class="f-wrap f-cb">
+        <div class="g-bd">
+            <div class="g-sd">
+                <div class="m-slidenav">
+                    <div class="navtitle"><i class="u-icon u-icon-blognews"></i>博客动态</div>
+                    <ul class="navmn">
+                        <li><a href="#">博客动态</a></li>
+                        <li><a href="#">消息中心</a></li>
+                    </ul>
+                </div>
+                <div class="m-slidenav">
+                    <div class="navtitle"><i class="u-icon u-icon-blogmanage"></i>博客管理</div>
+                    <div class="navmn">
+                        <ul>
+                            <li><a href="#">日志管理</a></li>
+                            <li class="current"><a href="#">博友管理</a></li>
+                            <li><a href="#">博客设置</a></li>
+                            <li><a href="#">博客装扮</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-slidenav">
+                    <div class="navtitle"><i class="u-icon u-icon-service"></i>服务</div>
+                    <div class="navmn">
+                        <ul>
+                            <li><a href="#">博客动态</a></li>
+                            <li><a href="#">消息中心</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="g-cnt">
+                <div class="g-tl">日志管理</div>
+                <div class="g-cntmn">
+                    <ul class="m-tabs" id="j-tab">
+                        <li class="current" data-id="j-con1"><a href="javascript:;">日志</a></li>
+                        <li data-id="j-con2"><a href="javascript:;">标签</a></li>
+                    </ul>
+                    <div class="m-tabcontain">
+                        <div name="j-con" id="j-con1">
+                            <form action="" class="m-form f-cb">
+                                <input type="text" class="formtitle" placeholder="日志标题">
+                                <textarea placeholder="这里可以写日志哦~" name="" id="" class="formcnt"></textarea >
+                                <button class="f-fr u-btn">清空</button>
+                                <button class="f-fr u-btn f-mr5">发布</button>
+                            </form>
+                            <ul id="j-postlist" class="m-postlist">
+                                <li>
+                                	<input type="checkbox" name="" id="">
+                                    <a href="#" class="title">js高性能原则</a>
+                                    <div class="operations">
+                                        <a href="#" class="edit">编辑</a>
+                                        <div class="more">
+                                        	<a href="#">更多</a>
+                                        	<i class="u-arrowdown"></i>
+                                        	<ul>
+                                        		<li><a href="#">删除</a></li>
+                                        		<li><a href="#">置顶</a></li>
+                                        	</ul>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="date">2010-06-23 11:36</span>
+                                        <span class="read">阅读量 <span class="count">11</span></span>
+                                        <span class="comments">评论 <span class="count">0</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                	<input type="checkbox" name="" id="">
+                                    <a href="#" class="title">js高性能原则</a>
+                                    <div class="operations">
+                                        <a href="#" class="edit">编辑</a>
+                                        <div class="more">
+                                        	<a href="#">更多</a>
+                                        	<i class="u-arrowdown"></i>
+                                        	<ul>
+                                        		<li><a href="#">删除</a></li>
+                                        		<li><a href="#">置顶</a></li>
+                                        	</ul>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="date">2010-06-23 11:36</span>
+                                        <span class="read">阅读量 <span class="count">11</span></span>
+                                        <span class="comments">评论 <span class="count">0</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                	<input type="checkbox" name="" id="">
+                                    <a href="#" class="title">js高性能原则</a>
+                                    <div class="operations">
+                                        <a href="#" class="edit">编辑</a>
+                                        <div class="more">
+                                        	<a href="#">更多</a>
+                                        	<i class="u-arrowdown"></i>
+                                        	<ul>
+                                        		<li><a href="#">删除</a></li>
+                                        		<li><a href="#">置顶</a></li>
+                                        	</ul>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="date">2010-06-23 11:36</span>
+                                        <span class="read">阅读量 <span class="count">11</span></span>
+                                        <span class="comments">评论 <span class="count">0</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                	<input type="checkbox" name="" id="">
+                                    <a href="#" class="title">js高性能原则</a>
+                                    <div class="operations">
+                                        <a href="#" class="edit">编辑</a>
+                                        <div class="more">
+                                        	<a href="#">更多</a>
+                                        	<i class="u-arrowdown"></i>
+                                        	<ul>
+                                        		<li><a href="#">删除</a></li>
+                                        		<li><a href="#">置顶</a></li>
+                                        	</ul>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="date">2010-06-23 11:36</span>
+                                        <span class="read">阅读量 <span class="count">11</span></span>
+                                        <span class="comments">评论 <span class="count">0</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                	<input type="checkbox" name="" id="">
+                                    <a href="#" class="title">js高性能原则</a>
+                                    <div class="operations">
+                                        <a href="#" class="edit">编辑</a>
+                                        <div class="more">
+                                        	<a href="#">更多</a>
+                                        	<i class="u-arrowdown"></i>
+                                        	<ul>
+                                        		<li><a href="#">删除</a></li>
+                                        		<li><a href="#">置顶</a></li>
+                                        	</ul>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="date">2010-06-23 11:36</span>
+                                        <span class="read">阅读量 <span class="count">11</span></span>
+                                        <span class="comments">评论 <span class="count">0</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                	<input type="checkbox" name="" id="">
+                                    <a href="#" class="title">js高性能原则</a>
+                                    <div class="operations">
+                                        <a href="#" class="edit">编辑</a>
+                                        <div class="more">
+                                        	<a href="#">更多</a>
+                                        	<i class="u-arrowdown"></i>
+                                        	<ul>
+                                        		<li><a href="#">删除</a></li>
+                                        		<li><a href="#">置顶</a></li>
+                                        	</ul>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="date">2010-06-23 11:36</span>
+                                        <span class="read">阅读量 <span class="count">11</span></span>
+                                        <span class="comments">评论 <span class="count">0</span></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="m-selectall">
+                                <input type="checkbox" name="selectall" id="j-selectall"><span>全选</span>
+                                <button class="u-btn">删除</button>
+                            </div>
+                        </div>
+                        <div name="j-con" id="j-con2" class="f-dn">
+                            <div class="m-label">
+                                没有标签
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="g-cntsd">
+                    <div class="m-scrolllist">
+                        <div class="title">好友最新日志</div>
+                        <ul>
+                            <li class="f-cb">
+                                <img src="" class="avatar" alt="">
+                                <div class="name"><a href="#">小油菜</a></div>
+                                <div class="description"><a href="#">2hit: 教你如何把美妞拍得嘿嘿嘿</a></div>
+                            </li>
+                            <li class="f-cb">
+                                <img src="" class="avatar" alt="">
+                                <div class="name"><a href="#">小油菜</a></div>
+                                <div class="description"><a href="#">2hit: 教你如何把美妞拍得嘿嘿嘿</a></div>
+                            </li>
+                            <li class="f-cb">
+                                <img src="" class="avatar" alt="">
+                                <div class="name"><a href="#">小油菜</a></div>
+                                <div class="description"><a href="#">2hit: 教你如何把美妞拍得嘿嘿嘿</a></div>
+                            </li>
+                            <li class="f-cb">
+                                <img src="" class="avatar" alt="">
+                                <div class="name"><a href="#">小油菜</a></div>
+                                <div class="description"><a href="#">2hit: 教你如何把美妞拍得嘿嘿嘿</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="g-footer">
+    	<div class="m-footer">
+    		<a href="#">公司简介</a>
+    		<a href="#">联系方法</a>
+    		<a href="#">招聘信息</a>
+    		<a href="#">客户服务</a>
+    		<a href="#">相关法律</a>
+    		<a href="#">博客风格</a>
+    		<a href="#">手机博客</a>
+    		<a href="#"><i class="u-icon u-icon-rss"></i>订阅此博客</a>
+    		<p>网易公司版权所有 @1997-2016</p>
+    	</div>
+    </div>
+    <script src="js/global.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
