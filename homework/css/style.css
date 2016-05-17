@@ -74,7 +74,7 @@ a,a:hover{color:#21759b;}
 .m-footer a:first-child:before{content: '';}
 .m-footer p{margin-top: 20px;text-align: center; }
 /* 元件: u- */
-.u-btn {height: 22px;padding:5px 10px; border: 1px solid #b4b4b4; cursor: pointer; color: #515151;background: #fefefe linear-gradient(to bottom, #fdfdfd, #e1e1e1);border-radius: 3px;} 
+.u-btn {box-sizing:border-box;display: inline-block;height: 22px;padding:5px 10px; border: 1px solid #b4b4b4; cursor: pointer; color: #515151;background: #fefefe linear-gradient(to bottom, #fdfdfd, #e1e1e1);border-radius: 3px;} 
 .u-arrowdown {margin-left: 3px;display: inline-block;border: solid 3px transparent; border-top-color: #a8a8a8;}
 .u-arrowup {margin-left: 3px;display: inline-block;border: solid 3px transparent; border-bottom-color: #a8a8a8;}
 .u-icon-email{height:14px;background-position: 0px -17px;vertical-align:sub;}

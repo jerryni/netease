@@ -100,7 +100,44 @@
         });
     };
 
-    
+    util.ajax = function (option) {
+        var _opt = {
+            type: 'GET'
+        };
+
+        this.extend(_opt, option);
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4){
+                if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || xhr.status === 0){
+                    // options.onsuccess(xhr.responseText);
+                    _opt.success(xhr.response);
+            }
+            else {
+                    console.log("unsucessful" + xhr.status);
+                }
+            }
+        };
+
+        xhr.responseType = 'json';
+        xhr.open(_opt.type, _opt.url, true);
+        xhr.send();
+    };
+
+    util.extend = function (target, src, deep) {
+        var prop;
+
+        for(prop in src ) {
+            if(deep && typeof(src[prop]) === 'object'
+                || Object.prototype.toString.call(src[prop]) === '[object array]') {
+
+                this.extend(target[prop],src[prop]);
+            } else if(Object.prototype.hasOwnProperty.call(src, prop)) {
+                target[prop] = src[prop];
+            }
+        }
+    };
 
     window._ = window.Util = util;
 
