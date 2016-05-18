@@ -10,24 +10,16 @@
         }
     };
 
-    util.getSiblings = function(node) {
-        var arr = [],
-            temp;
+    util.getChildren = function(n, skipMe) {
+            var r = [];
+            for ( ; n; n = n.nextSibling ) 
+               if ( n.nodeType == 1 && n != skipMe)
+                  r.push( n );        
+            return r;
+        };
 
-        temp = node;
-        while (temp.previousElementSibling) {
-            arr.push(temp.previousElementSibling);
-            temp = temp.previousElementSibling;
-        }
-
-        temp = node;
-        while (temp.nextElementSibling) {
-            arr.push(temp.nextElementSibling);
-            temp = temp.nextElementSibling;
-        }
-
-        return arr;
-
+    util.getSiblings = function(n) {
+        return this.getChildren(n.parentNode.firstChild, n);
     };
 
     util.addClass = function(node, className) {
@@ -67,19 +59,20 @@
     util.checkboxHelper = function(selectAllEl, listCon) {
         
 
-        selectAllEl.onclick = function(e) {
+        this.addEvent(selectAllEl, 'click', function(e) {
             var chks = listCon.querySelectorAll('input[type=checkbox]'),
                 len = chks.length,
-                i;
+                i,
+                tar =  e.srcElement || e.target;
 
             for (i = 0; i < len; i++) {
-                chks[i].checked = e.target.checked;
+                chks[i].checked = tar.checked;
             }
-        };
+        });
 
         //列表选项的检查
         this.addEvent(listCon, 'click', function (e) {
-            var tar = e.target,
+            var tar = e.target || e.srcElement,
                 chks = listCon.querySelectorAll('input[type=checkbox]'),
                 len = chks.length,
                 i;
@@ -116,7 +109,7 @@
             if(xhr.readyState === 4){
                 if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || xhr.status === 0){
                     // options.onsuccess(xhr.responseText);
-                    _opt.success(xhr.response);
+                    _opt.success(JSON.parse(xhr.responseText));
             }
             else {
                     console.log("unsucessful" + xhr.status);
@@ -124,7 +117,7 @@
             }
         };
 
-        xhr.responseType = 'json';
+        // xhr.responseType = 'json';
         xhr.open(_opt.type, _opt.url, true);
         xhr.send();
     };
@@ -143,7 +136,6 @@
         }
     };
 
-    var isHovered = true;
     util.animation = function (el, dur, attr,from, to, hasHoverPaused, cb) {
         var timeId,
             startTime,

@@ -30,7 +30,7 @@
 
         initTab: function($con) {
             _.addEvent($con, 'click', function(e) {
-                var target = e.target;
+                var target = e.target || e.srcElement;
 
                 if (!target ||
                     (target.nodeName !== 'LI' && target.nodeName !== 'A')) {
@@ -45,7 +45,7 @@
                 _.removeSibingsClass(target, 'current');
 
                 // content切换
-                _.showCurrent($('#' + target.dataset.id));
+                _.showCurrent($('#' + target.getAttribute('data-id')));
             });
         },
 
@@ -57,7 +57,6 @@
                 url: 'data/getFriendsLatestBlogs.json',
                 // url: 'http://fed.hz.netease.com/api/getFriendsLatestBlogs?userid=testblog',
                 success: function(data) {
-                    console.log(data);
                     if(!data || !data.length) {
                         return;
                     }
@@ -98,7 +97,6 @@
                 url: 'data/getblogs.json',
                 // url: 'http://fed.hz.netease.com/api/getFriendsLatestBlogs?userid=testblog',
                 success: function(data) {
-                    console.log(data);
                     if(!data || !data.length) {
                         return;
                     }
@@ -172,7 +170,7 @@
                 if(isHovered) {
                     return;
                 }
-                
+
                 _.animation(ul,1000, 'top', index * -50, -50 * (index + 1),true, function () {
                     timeId = setTimeout(move,2000);
                 });
