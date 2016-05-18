@@ -63,6 +63,7 @@
                     }
                     
                     self.renderFriendsLatestBlogs(data);
+                    self.bindScrollList();
                 }
             });
         },
@@ -149,10 +150,54 @@
                 document.forms['j-formpost'].reset();
                 return false;
             };
+        },
+
+        bindScrollList: function () {
+            var ul = $('#j-friendsposts'),
+                height,
+                childs,
+                cLen,
+                times,
+                index = 0,
+                isHovered = false,
+                timeId;
+
+            height = ul.clientHeight;
+            childs = ul.childNodes;
+            cLen = childs.length;
+            times = cLen - 5;
+
+            function move() {
+
+                if(isHovered) {
+                    return;
+                }
+                
+                _.animation(ul,1000, 'top', index * -50, -50 * (index + 1),true, function () {
+                    timeId = setTimeout(move,2000);
+                });
+
+                index++;
+
+                if(index >= times) {
+                    index = 0;
+                }
+            }
+
+            _.addEvent(ul, 'mouseenter', function(){
+
+                isHovered = true;
+                clearTimeout(timeId);
+            });
+            _.addEvent(ul, 'mouseleave', function(){
+                isHovered = false;
+                timeId = setTimeout(move,2000);
+            });
+
+            move();
         }
     };
 
     index.init();
-
 
 })(Util);

@@ -54,7 +54,7 @@ a,a:hover{color:#21759b;}
 .m-selectall {padding: 10px 0 10px 15px;}
 .m-selectall input {margin-right: 5px;}
 .m-scrolllist { position: relative;height: 250px;overflow:hidden;}
-.m-scrolllist ul { position: absolute;left: 0;top:0;padding: 0 10px; transition: 50s;-webkit-transform: translate(0,-100px);}
+.m-scrolllist ul { position: absolute;left: 0;top:0;padding: 0 10px; }
 /* .m-scrolllist ul:hover{-webkit-animation-play-state: paused; -moz-animation-play-state: paused; -o-animation-play-state: paused; animation-play-state: paused;} */
 .m-scrolllist ul li{ margin-bottom: 10px;width: 190px;}
 .m-scrolllist ul li img{ float: left; width: 40px;height: 40px;}

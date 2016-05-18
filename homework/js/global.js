@@ -143,6 +143,53 @@
         }
     };
 
+    var isHovered = true;
+    util.animation = function (el, dur, attr,from, to, hasHoverPaused, cb) {
+        var timeId,
+            startTime,
+            distance = to - from,
+            leftDur,
+            nowPos,
+
+            FRAME_TIME = 13;
+
+        function move() {
+
+            var per = Math.min(1.0, (new Date - startTime)/dur);
+
+            if(per >= 1) {
+                clearInterval(timeId);
+                el.onmouseenter = null;
+                el.onmouseleave = null;
+                cb();
+            } else {
+                el.style[attr] = from + Math.round(distance * per) + 'px';
+            }
+        }
+
+        function start() {
+            startTime = new Date;
+            timeId = setInterval(move, FRAME_TIME);
+        }
+
+        if(hasHoverPaused) {
+            el.onmouseenter = function () {
+                var per = Math.min(1.0, (new Date - startTime)/dur);
+
+                leftDur = dur * (1 - per);
+                nowPos = from + Math.round(distance * per);
+                
+                clearInterval(timeId);
+            };
+
+            el.onmouseleave = function () {
+                util.animation(el, leftDur, attr, nowPos, to, true, cb);
+                
+            };
+        }
+        start();
+    };
+
     window._ = window.Util = util;
 
 })();
