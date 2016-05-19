@@ -14,6 +14,7 @@ a,a:hover{color:#21759b;}
 .g-cnt .g-cntsd .title{ font-weight: bold;margin-bottom: 15px;}
 .g-footer {text-align: center;}
 /* 模块: m- */
+/* 问题: 各个模块之间可以加注释或者换行，提高可读性 */
 .m-barnav { float: left; margin-left: -10px; }
 .m-barnav li{ float: left; margin-left: 10px;padding: 7px 5px;}
 .m-barnav li:hover{cursor: pointer;background:#969696;color:#fff;}
@@ -45,12 +46,17 @@ a,a:hover{color:#21759b;}
 .m-postlist .operations .more>a {cursor: default;}
 .m-postlist .operations .more:hover{ border-color:#c8d9e3;}
 .m-postlist .operations .more:hover ul{ display: block; }
+/* 问题: 层级太深, 只要能定位到需要的元素, 就不用这样*/
 .m-postlist .operations .more ul {display: none;position: absolute; right: -1px; top: 100%; border: 1px solid #c8d9e3; border-top: none; background: #fff; padding-bottom: 5px; z-index: 10;}
 .m-postlist .operations .more ul li { display: block; padding: 4px; width:47px; }
 .m-postlist .operations .more ul li:hover {cursor: pointer;background:#ececec;}
 
 .m-postlist .info {margin-top: 5px;}
 .m-postlist .info > span{ margin-left: 20px; }
+
+/* 问题: 模块下直接 tag是不可取的... 因为如果有嵌套, 容易污染; 除非, 确定该模块是最终级的模块;
+   解决: 加特定class限制
+*/
 .m-selectall {padding: 10px 0 10px 15px;}
 .m-selectall input {margin-right: 5px;}
 .m-scrolllist { position: relative;height: 250px;overflow:hidden;}
@@ -75,8 +81,12 @@ a,a:hover{color:#21759b;}
 .m-footer p{margin-top: 20px;text-align: center; }
 /* 元件: u- */
 .u-btn {box-sizing:border-box;display: inline-block;height: 22px;padding:5px 10px; border: 1px solid #b4b4b4; cursor: pointer; color: #515151;background: #fefefe linear-gradient(to bottom, #fdfdfd, #e1e1e1);border-radius: 3px;} 
+
+/* 问题: 这2个是需要提取出基类的 */
 .u-arrowdown {margin-left: 3px;display: inline-block;border: solid 3px transparent; border-top-color: #a8a8a8;}
 .u-arrowup {margin-left: 3px;display: inline-block;border: solid 3px transparent; border-bottom-color: #a8a8a8;}
+
+
 .u-icon-email{height:14px;background-position: 0px -17px;vertical-align:sub;}
 .u-icon-usercenter{  height: 17px;background-position: 0px -63px;vertical-align:sub;}
 .u-icon-blognews{height:18px;background-position: 0 0;}

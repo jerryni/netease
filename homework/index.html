@@ -44,6 +44,7 @@
                 <li><span>随便看看</span></li>
             </ul>
             <div class="m-usernav">
+                <!-- 问题: 可点击的span也应该使用a标签 -->
                 <span class="greet s-gray">中午好，<span class="username">testblog1</span>（<i class="u-icon u-icon-email"></i><span class="count">5</span>）</span>
                 <span class="f-pipenav"></span>
                 <i class="u-icon u-icon-usercenter f-ml10"></i><span>个人中心</span>
@@ -58,6 +59,8 @@
         <div class="f-wrap">
             <div class="m-userinfo">
                 <img src="http://os.blog.163.com/common/ava.s?host=testblog1&b=0&r=-1" alt="avatar" class="avatar">
+
+                <!-- 问题: 需要标题语义化 -->
                 <div class="greet">欢迎！<span class="username">testblog</span></div>
                 <button class="uploadavatar u-btn">传相片</button>
             </div>
@@ -67,6 +70,7 @@
         <div class="g-bd">
             <div class="g-sd">
                 <div class="m-slidenav">
+                    <!-- 问题: 需要标题语义化 -->
                     <div class="navtitle"><i class="u-icon u-icon-blognews"></i>博客动态</div>
                     <ul class="navmn">
                         <li><a href="#">博客动态</a></li>
@@ -74,6 +78,7 @@
                     </ul>
                 </div>
                 <div class="m-slidenav">
+                    <!-- 问题: 需要标题语义化 -->
                     <div class="navtitle"><i class="u-icon u-icon-blogmanage"></i>博客管理</div>
                     <div class="navmn">
                         <ul>
@@ -85,6 +90,7 @@
                     </div>
                 </div>
                 <div class="m-slidenav">
+                    <!-- 问题: 需要标题语义化 -->
                     <div class="navtitle"><i class="u-icon u-icon-service"></i>服务</div>
                     <div class="navmn">
                         <ul>
@@ -95,6 +101,7 @@
                 </div>
             </div>
             <div class="g-cnt">
+                <!-- 问题: 需要标题语义化 -->
                 <div class="g-tl">日志管理</div>
                 <div class="g-cntmn">
                     <ul class="m-tabs" id="j-tab">
@@ -106,12 +113,16 @@
                             <form action="" class="m-form f-cb" name="j-formpost">
                                 <input type="text" class="formtitle" placeholder="日志标题">
                                 <textarea placeholder="这里可以写日志哦~" name="" id="" class="formcnt"></textarea>
+
+                                <!-- 问题: 这2个span应该用button, 并且type="submit"/"reset" -->
                                 <span class="f-fr u-btn" id="j-btnreset">清空</span>
                                 <span class="f-fr u-btn f-mr5">发布</span>
                             </form>
                             <ul id="j-postlist" class="m-postlist">
                                 <li>
                                     <input type="checkbox" name="" id="">
+
+                                    <!-- 问题: 列表标题需要省略号处理 -->
                                     <a href="#" class="title">js高性能原则</a>
                                     <div class="operations">
                                         <a href="#" class="edit">编辑</a>
@@ -232,6 +243,7 @@
                                 </li>
                             </ul>
                             <div class="m-selectall">
+                                <!-- 问题:全选这种要加label -->
                                 <input type="checkbox" name="selectall" id="j-selectall"><span>全选</span>
                                 <button class="u-btn">删除</button>
                             </div>
@@ -244,6 +256,7 @@
                     </div>
                 </div>
                 <div class="g-cntsd">
+                    <!-- 问题: 需要标题语义化 -->
                     <div class="title">好友最新日志</div>
                     <div class="m-scrolllist">
                         <ul id="j-friendsposts">
@@ -279,7 +292,9 @@
             <a href="#">博客风格</a>
             <a href="#">手机博客</a>
             <a href="#"><i class="u-icon u-icon-rss"></i>订阅此博客</a>
-            <p>网易公司版权所有 @1997-2016</p>
+
+            <!-- 公司版权 应该用&copy; -->
+            <p>网易公司版权所有 &copy;1997-2016</p>
         </div>
     </div>
     <script src="js/global.js"></script>
