@@ -135,7 +135,7 @@ a:hover {
 }
 
 .m-slidenav {
-    border-radius: 3px;
+    border-radius: 2px;
     margin-bottom: 20px;
     border: 1px solid #bbb;
 }
@@ -164,12 +164,19 @@ a:hover {
 }
 
 .m-slidenav .navmn li:hover {
-    cursor: pointer;
+    cursor: pointer;    
     background-color: #f8f8f8;
 }
 
-.m-slidenav .navmn li.current {
+.m-slidenav .navmn li:hover a{
+    color: #333;
+}
+
+.m-slidenav .navmn li.current {    
     background-color: #ececec;
+}
+.m-slidenav .navmn li.current a{
+    color: #333;
 }
 
 .m-tabs {
