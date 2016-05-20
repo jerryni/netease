@@ -1,0 +1,117 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'puer', '–g' ]
+2 info using npm@2.13.4
+3 info using node@v0.12.2
+4 verbose config Skipping project config: /Users/nirizhe/.npmrc. (matches userconfig)
+5 verbose install initial load of /Users/nirizhe/package.json
+6 warn package.json nirizhe@0.0.0 No description
+7 warn package.json nirizhe@0.0.0 No repository field.
+8 warn package.json nirizhe@0.0.0 No README data
+9 warn package.json nirizhe@0.0.0 No license field.
+10 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt/package.json
+11 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-autoprefixer/package.json
+12 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-bower-install/package.json
+13 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-concurrent/package.json
+14 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-clean/package.json
+15 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-concat/package.json
+16 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-connect/package.json
+17 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-copy/package.json
+18 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-cssmin/package.json
+19 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-htmlmin/package.json
+20 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-imagemin/package.json
+21 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-jshint/package.json
+22 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-uglify/package.json
+23 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-contrib-watch/package.json
+24 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-mocha/package.json
+25 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-newer/package.json
+26 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-rev/package.json
+27 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-svgmin/package.json
+28 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/grunt-usemin/package.json
+29 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp/package.json
+30 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp-concat/package.json
+31 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp-iconfont/package.json
+32 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp-minify-css/package.json
+33 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp-plumber/package.json
+34 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp-sourcemaps/package.json
+35 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp-uglify/package.json
+36 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/gulp-util/package.json
+37 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/http-server/package.json
+38 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/jshint-stylish/package.json
+39 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/load-grunt-tasks/package.json
+40 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/node-static/package.json
+41 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/open/package.json
+42 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/tianqi/package.json
+43 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/time-grunt/package.json
+44 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/vue/package.json
+45 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/yeoman-generator/package.json
+46 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/@lib/.DS_Store/package.json
+47 verbose installManyTop reading scoped package data from /Users/nirizhe/node_modules/@lib/pic-editor/package.json
+48 info package.json grunt-bower-install@1.4.1 No license field.
+49 info package.json grunt-concurrent@0.5.0 No license field.
+50 info package.json grunt-contrib-concat@0.3.0 No license field.
+51 info package.json grunt-contrib-clean@0.5.0 No license field.
+52 info package.json grunt-contrib-connect@0.7.1 No license field.
+53 info package.json grunt-contrib-copy@0.5.0 No license field.
+54 info package.json grunt-contrib-cssmin@0.9.0 No license field.
+55 info package.json grunt-contrib-htmlmin@0.2.0 No license field.
+56 info package.json grunt-contrib-jshint@0.9.2 No license field.
+57 info package.json grunt-contrib-imagemin@0.6.1 No license field.
+58 info package.json grunt-contrib-watch@0.6.1 No license field.
+59 info package.json grunt-svgmin@0.4.0 No license field.
+60 info package.json grunt-newer@0.7.0 No license field.
+61 info package.json grunt-usemin@2.1.1 license should be a valid SPDX license expression
+62 info package.json grunt-rev@0.1.0 No license field.
+63 info package.json http-server@0.7.3 No license field.
+64 info package.json grunt-mocha@0.4.15 No license field.
+65 info package.json grunt@0.4.5 No license field.
+66 info package.json grunt-contrib-uglify@0.4.1 No license field.
+67 info package.json yeoman-generator@0.17.7 license should be a valid SPDX license expression
+68 verbose readDependencies loading dependencies from /Users/nirizhe/package.json
+69 silly cache add args [ 'puer', null ]
+70 verbose cache add spec puer
+71 silly cache add args [ '–g', null ]
+72 verbose cache add spec –g
+73 silly cache add parsed spec { raw: 'puer',
+73 silly cache add   scope: null,
+73 silly cache add   name: 'puer',
+73 silly cache add   rawSpec: '',
+73 silly cache add   spec: '*',
+73 silly cache add   type: 'range' }
+74 silly addNamed puer@*
+75 verbose addNamed "*" is a valid semver range for puer
+76 silly addNameRange { name: 'puer', range: '*', hasData: false }
+77 silly mapToRegistry name puer
+78 silly mapToRegistry using default registry
+79 silly mapToRegistry registry http://registry.npmjs.org/
+80 silly mapToRegistry uri http://registry.npmjs.org/puer
+81 verbose addNameRange registry:http://registry.npmjs.org/puer not in flight; fetching
+82 silly cache add parsed spec { raw: '–g',
+82 silly cache add   scope: null,
+82 silly cache add   name: null,
+82 silly cache add   rawSpec: '–g',
+82 silly cache add   spec: '/Users/nirizhe/Sites/netease/homework/–g',
+82 silly cache add   type: 'local' }
+83 verbose request uri http://registry.npmjs.org/puer
+84 verbose request no auth needed
+85 info attempt registry request try #1 at 2:35:24 PM
+86 verbose request using bearer token for auth
+87 verbose request id e323f4cac85cbbf7
+88 http request GET http://registry.npmjs.org/puer
+89 error addLocal Could not install /Users/nirizhe/Sites/netease/homework/–g
+90 http 400 http://registry.npmjs.org/puer
+91 verbose headers {}
+92 silly get cb [ 400, {} ]
+93 verbose stack Error: ENOENT, open '/Users/nirizhe/Sites/netease/homework/–g'
+93 verbose stack     at Error (native)
+94 verbose cwd /Users/nirizhe/Sites/netease/homework
+95 error Darwin 13.4.0
+96 error argv "node" "/usr/local/bin/npm" "install" "puer" "–g"
+97 error node v0.12.2
+98 error npm  v2.13.4
+99 error path /Users/nirizhe/Sites/netease/homework/–g
+100 error code ENOENT
+101 error errno -2
+102 error enoent ENOENT, open '/Users/nirizhe/Sites/netease/homework/–g'
+102 error enoent This is most likely not a problem with npm itself
+102 error enoent and is related to npm not being able to find a file.
+103 verbose exit [ -2, true ]

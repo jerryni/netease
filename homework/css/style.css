@@ -229,6 +229,36 @@ a:hover {
     margin-bottom: 5px;
 }
 
+.m-form input.formtitle::-webkit-input-placeholder {
+
+   color: #333;
+
+}
+
+
+
+.m-form input.formtitle:-moz-placeholder { 
+
+   color: #333;  
+
+}
+
+
+
+.m-form input.formtitle::-moz-placeholder {
+
+   color: #333;  
+
+}
+
+
+
+.m-form input.formtitle:-ms-input-placeholder {  
+
+   color: #333;  
+
+}
+
 .m-form textarea.formcnt {
     box-sizing: border-box;
     padding: 10px;
