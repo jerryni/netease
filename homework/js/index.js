@@ -68,24 +68,11 @@
         },
 
         renderFriendsLatestBlogs: function(data) {
-            var tpl = '<li class="f-cb">' +
-                '<img src="" class="avatar" alt="">' +
-                '<div class="name"><a href="#">{{userNickname}}</a></div>' +
-                '<div class="description"><a href="#">{{title}}</a></div>' +
-                '</li>',
-                html = '',
-                temp;
+            var html;
 
-            if(!data) {
-                html = '<li>没有数据</li>';
-            }
-
-            for (var i = 0;i<data.length;i++){
-                temp = tpl.replace('{{userNickname}}', data[i].userNickname)
-                    .replace('{{title}}', data[i].title);
-
-                html += temp;
-            }
+            html = _.tmpl('tmplfriendsposts', {
+                items: data
+            });
 
             $('#j-friendsposts').innerHTML = html;
         },
@@ -107,41 +94,11 @@
         },
 
         renderPosts: function(data) {
-            var tpl = '<li class="f-cb private">' +
-                        '<input type="checkbox" name="" id="">' +
-                        '<!-- 问题: 列表标题需要省略号处理 -->' +
-                        '<div class="title">' +
-                            '<a href="#"><h6><i class="u-icon u-icon-privatepost"></i>{{title}}</h6></a>' +
-                            '<div class="info">' +
-                                '<span class="date">{{shortPublishDateStr}} {{publishTimeStr}}</span>' +
-                                '<span class="read">阅读量 <span class="count">{{accessCount}}</span></span>' +
-                                '<span class="comments">评论 <span class="count">{{commentCount}}</span></span>' +
-                            '</div>' +
-                        '</div>' +
-                        '<div class="operations">' +
-                            '<a href="#" class="edit">编辑</a>' +
-                            '<div class="more">' +
-                                '<a href="#">更多</a>' +
-                                '<i class="u-arrowdown"></i>' +
-                                '<ul>' +
-                                    '<li><a href="#">删除</a></li>' +
-                                    '<li><a href="#">置顶</a></li>' +
-                                '</ul>' +
-                            '</div>' +
-                        '</div>' +
-                    '</li>',
-                html = '',
-                temp;
+            var html;
 
-            for (var i = 0;i<data.length;i++){
-                temp = tpl.replace('{{shortPublishDateStr}}', data[i].shortPublishDateStr)
-                    .replace('{{title}}', data[i].title)
-                    .replace('{{publishTimeStr}}', data[i].publishTimeStr)
-                    .replace('{{commentCount}}', data[i].commentCount)
-                    .replace('{{accessCount}}', data[i].accessCount);
-
-                html += temp;
-            }
+            html = _.tmpl('tmplpostlist', {
+                items:data
+            });
 
             $('#j-postlist').innerHTML = html;
         },

@@ -12,6 +12,43 @@
 </head>
 
 <body>
+<!--模板引擎-->
+<script type="text/tmpl" id="tmplpostlist">
+<% for (var i = 0;i<items.length;i++) { %>
+    <li class="f-cb <%= items[i].allowView == 10000 ? 'private' : '' %> ">
+        <input type="checkbox" name="" id="">
+        <!-- 问题: 列表标题需要省略号处理 -->
+        <div class="title">
+            <a href="#"><h6><i class="u-icon u-icon-privatepost"></i><%= items[i].title %></h6></a>
+            <div class="info">
+                <span class="date"><%= items[i].shortPublishDateStr %> <%= items[i].publishTimeStr %></span>
+                <span class="read">阅读量 <span class="count"><%= items[i].accessCount %></span></span>
+                <span class="comments">评论 <span class="count"><%= items[i].commentCount %></span></span>
+            </div>
+        </div>
+        <div class="operations">
+            <a href="#" class="edit">编辑</a>
+            <div class="more">
+                <a href="#">更多</a>
+                <i class="u-arrowdown"></i>
+                <ul>
+                    <li><a href="#">删除</a></li>
+                    <li><a href="#">置顶</a></li>
+                </ul>
+            </div>
+        </div>
+    </li>
+<% } %>
+</script>
+<script type="text/tmpl" id="tmplfriendsposts">
+    <% for (var i = 0;i<items.length;i++) { %>
+    <li class="f-cb">
+        <img src="" class="avatar" alt="">
+        <div class="name"><a href="#"><%= items[i].userNickname %></a></div>
+        <div class="description"><a href="#"><%= items[i].title %></a></div>
+    </li>
+    <% } %>
+</script>
     <!-- 
         hd: head
         mn: main

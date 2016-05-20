@@ -11,12 +11,12 @@
     };
 
     util.getChildren = function(n, skipMe) {
-            var r = [];
-            for ( ; n; n = n.nextSibling ) 
-               if ( n.nodeType == 1 && n != skipMe)
-                  r.push( n );        
-            return r;
-        };
+        var r = [];
+        for (; n; n = n.nextSibling)
+            if (n.nodeType == 1 && n != skipMe)
+                r.push(n);
+        return r;
+    };
 
     util.getSiblings = function(n) {
         return this.getChildren(n.parentNode.firstChild, n);
@@ -57,13 +57,13 @@
     };
 
     util.checkboxHelper = function(selectAllEl, listCon) {
-        
+
 
         this.addEvent(selectAllEl, 'click', function(e) {
             var chks = listCon.querySelectorAll('input[type=checkbox]'),
                 len = chks.length,
                 i,
-                tar =  e.srcElement || e.target;
+                tar = e.srcElement || e.target;
 
             for (i = 0; i < len; i++) {
                 chks[i].checked = tar.checked;
@@ -71,23 +71,23 @@
         });
 
         //列表选项的检查
-        this.addEvent(listCon, 'click', function (e) {
+        this.addEvent(listCon, 'click', function(e) {
             var tar = e.target || e.srcElement,
                 chks = listCon.querySelectorAll('input[type=checkbox]'),
                 len = chks.length,
                 i;
 
-            if(tar.type.toUpperCase() === 'CHECKBOX') {
+            if (tar.type.toUpperCase() === 'CHECKBOX') {
 
                 // 如果是去掉勾, 那么去掉全选的勾
-                if(!tar.checked) {
+                if (!tar.checked) {
                     selectAllEl.checked = false;
                     return;
                 }
 
                 // 选中的话, 如果大家都选中, 那么全选也要选中
-                for(i = 0; i < len; i++){
-                    if(!chks[i].checked){
+                for (i = 0; i < len; i++) {
+                    if (!chks[i].checked) {
                         return;
                     }
                 }
@@ -97,7 +97,7 @@
         });
     };
 
-    util.ajax = function (option) {
+    util.ajax = function(option) {
         var _opt = {
             type: 'GET'
         };
@@ -105,13 +105,12 @@
         this.extend(_opt, option);
 
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if(xhr.readyState === 4){
-                if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || xhr.status === 0){
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || xhr.status === 0) {
                     // options.onsuccess(xhr.responseText);
                     _opt.success(JSON.parse(xhr.responseText));
-            }
-            else {
+                } else {
                     console.log("unsucessful" + xhr.status);
                 }
             }
@@ -122,21 +121,20 @@
         xhr.send();
     };
 
-    util.extend = function (target, src, deep) {
+    util.extend = function(target, src, deep) {
         var prop;
 
-        for(prop in src ) {
-            if(deep && typeof(src[prop]) === 'object'
-                || Object.prototype.toString.call(src[prop]) === '[object array]') {
+        for (prop in src) {
+            if (deep && typeof(src[prop]) === 'object' || Object.prototype.toString.call(src[prop]) === '[object array]') {
 
-                this.extend(target[prop],src[prop]);
-            } else if(Object.prototype.hasOwnProperty.call(src, prop)) {
+                this.extend(target[prop], src[prop]);
+            } else if (Object.prototype.hasOwnProperty.call(src, prop)) {
                 target[prop] = src[prop];
             }
         }
     };
 
-    util.animation = function (el, dur, attr,from, to, hasHoverPaused, cb) {
+    util.animation = function(el, dur, attr, from, to, hasHoverPaused, cb) {
         var timeId,
             startTime,
             distance = to - from,
@@ -147,9 +145,9 @@
 
         function move() {
 
-            var per = Math.min(1.0, (new Date - startTime)/dur);
+            var per = Math.min(1.0, (new Date - startTime) / dur);
 
-            if(per >= 1) {
+            if (per >= 1) {
                 clearInterval(timeId);
                 el.onmouseenter = null;
                 el.onmouseleave = null;
@@ -164,23 +162,52 @@
             timeId = setInterval(move, FRAME_TIME);
         }
 
-        if(hasHoverPaused) {
-            el.onmouseenter = function () {
-                var per = Math.min(1.0, (new Date - startTime)/dur);
+        if (hasHoverPaused) {
+            el.onmouseenter = function() {
+                var per = Math.min(1.0, (new Date - startTime) / dur);
 
                 leftDur = dur * (1 - per);
                 nowPos = from + Math.round(distance * per);
-                
+
                 clearInterval(timeId);
             };
 
-            el.onmouseleave = function () {
+            el.onmouseleave = function() {
                 util.animation(el, leftDur, attr, nowPos, to, true, cb);
-                
+
             };
         }
         start();
     };
+
+    var tempCache = {};
+
+    /**
+     * 模板渲染方法
+     * @modify nirizhe
+     * @date   2016-05-20
+     * @param  {[String]}   str  模板id或者string
+     * @param  {[Object]}   data 渲染数据
+     * @return {[String]}        最终结果
+     */
+    util.tmpl = function tmpl(str, data) {
+        var fn = !/\W/.test(str) ?
+            tempCache[str] = tempCache[str] ||
+            tmpl(document.getElementById(str).innerHTML) :
+            new Function("obj",
+                "var p=[],print=function(){p.push.apply(p,arguments);};" +
+                "with(obj){p.push('" +
+                str
+                .replace(/[\r\t\n]/g, " ")
+                .split("<%").join("\t")
+                .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+                .replace(/\t=(.*?)%>/g, "',$1,'")
+                .split("\t").join("');")
+                .split("%>").join("p.push('")
+                .split("\r").join("\\'") + "');}return p.join('');");
+        return data ? fn(data) : fn;
+    };
+
 
     window._ = window.Util = util;
 
