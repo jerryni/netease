@@ -111,8 +111,12 @@
         },
 
         delBlogs: function (ids) {
-            var self = this;
+            var self = this,
+                isMulti;
 
+            if(ids.indexOf('&') > -1) {
+                isMulti = true;
+            }
 
             _.ajax({
                 url: 'data/deleteBlogs.json',
@@ -123,6 +127,7 @@
                     if (data === 1) {
                         alert('删除成功');
                         self.removeDeletedPost(ids);
+                        isMulti && self.loadPosts();
                     } else {
                         alert('删除失败');
                     }
