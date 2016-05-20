@@ -97,19 +97,50 @@
         });
     };
 
+    /* obj => a=xx&&b=yy */
+    util.objToParams = function (obj) {
+        var str = '';
+        for(var key in obj) {
+            if(!obj.hasOwnProperty(key)){
+                continue;
+            }
+
+            if(str !== '') {
+                str += '&';
+            }
+
+            str += key + '=' + encodeURIComponent(obj[key]);
+        }
+
+        return str;
+    };
+
     util.ajax = function(option) {
         var _opt = {
             type: 'GET'
-        };
+        },
+        data = '';
 
         this.extend(_opt, option);
+        
+        if(option.data){
+            data = util.objToParams(option.data);
+        }
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
+            var serverData;
+
             if (xhr.readyState === 4) {
                 if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || xhr.status === 0) {
-                    // options.onsuccess(xhr.responseText);
-                    _opt.success(JSON.parse(xhr.responseText));
+                    
+                    try {
+                        serverData = JSON.parse(xhr.responseText);
+                    } catch(e){
+                        console.log('ajax json parse error:', e);
+                    }
+
+                    _opt.success(serverData);
                 } else {
                     console.log("unsucessful" + xhr.status);
                 }
@@ -118,7 +149,7 @@
 
         // xhr.responseType = 'json';
         xhr.open(_opt.type, _opt.url, true);
-        xhr.send();
+        xhr.send(data);
     };
 
     util.extend = function(target, src, deep) {
@@ -211,4 +242,18 @@
 
     window._ = window.Util = util;
 
+    var api = {};
+
+    api = {
+        'deletePosts': 'http://fed.hz.netease.com/api/deleteBlogs',
+        'addBlog': 'http://fed.hz.netease.com/api/addBlog',
+        'editBlog': 'http://fed.hz.netease.com/api/editBlog',
+        'getFriendsLatestBlogs': 'http://fed.hz.netease.com/api/getFriendsLatestBlogs',
+        'topBlog': 'http://fed.hz.netease.com/api/topBlog',
+        'untopBlog': 'http://fed.hz.netease.com/api/untopBlog',
+        'getBlogs': 'http://fed.hz.netease.com/api/getblogs'
+    };
+
+    window.API = api;
 })();
+

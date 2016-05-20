@@ -331,10 +331,7 @@ a:hover {
     display: block;
 }
 
-
-/* 问题: 层级太深, 只要能定位到需要的元素, 就不用这样*/
-
-.m-postlist .operations .more ul {
+.m-postlist .operations ul {
     display: none;
     position: absolute;
     right: -1px;
@@ -346,13 +343,13 @@ a:hover {
     z-index: 10;
 }
 
-.m-postlist .operations .more ul li {
+.m-postlist .operations ul li {
     display: block;
     padding: 4px;
     width: 47px;
 }
 
-.m-postlist .operations .more ul li:hover {
+.m-postlist .operations ul li:hover {
     cursor: pointer;
     background: #ececec;
 }
@@ -366,7 +363,7 @@ a:hover {
 }
 .m-postlist .info span.date {
     width: 135px;
-    margin-left: 5px
+    margin-left: 5px;
 }
 
 .m-postlist .info span.read {
@@ -385,8 +382,12 @@ a:hover {
     padding: 10px 0 10px 15px;
 }
 
-.m-selectall input {
+.m-selectall input.chk-selectall {
+    cursor: pointer;
     margin-right: 5px;
+}
+.m-selectall label {
+    cursor: pointer;
 }
 
 .m-scrolllist {
@@ -418,7 +419,8 @@ a:hover {
 
 .m-scrolllist ul li .name {
     margin-left: 45px;
-    padding-top: 5px
+    padding-top: 5px;
+    font-weight: bold;
 }
 
 .m-scrolllist ul li .description {
@@ -467,7 +469,7 @@ a:hover {
     display: block;
 }
 
-.m-dropdown:hover .u-arrowdown {
+.m-dropdown:hover .u-arrow.down {
     position: relative;
     border-top-color: transparent;
     border-bottom-color: #fff;
@@ -518,17 +520,17 @@ a:hover {
 
 /* 问题: 这2个是需要提取出基类的 */
 
-.u-arrowdown {
+.u-arrow {
     margin-left: 3px;
     display: inline-block;
     border: solid 3px transparent;
+}
+.u-arrow.down {
     border-top-color: #a8a8a8;
 }
 
-.u-arrowup {
-    margin-left: 3px;
-    display: inline-block;
-    border: solid 3px transparent;
+.u-arrow.up {
+    
     border-bottom-color: #a8a8a8;
 }
 
