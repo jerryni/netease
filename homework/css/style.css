@@ -269,7 +269,25 @@ a:hover {
     border: #bbb 1px solid;
 }
 
-.m-postlist {}
+.m-postlist .title{
+    float: left;
+    
+}
+
+.m-postlist .u-icon-privatepost{
+    display: none;
+}
+.m-postlist li.private .u-icon-privatepost{
+    display: inline-block;
+}
+
+.m-postlist .title h6{
+    display: block;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;   
+    white-space: nowrap;
+}
 
 .m-postlist >li {
     padding: 8px 0 8px 20px;
@@ -277,6 +295,7 @@ a:hover {
 }
 
 .m-postlist >li input {
+    float: left;
     margin-right: 5px;
 }
 
@@ -293,6 +312,11 @@ a:hover {
     margin-left: 10px;
     border: 1px solid #fff;
     border-bottom: none;
+}
+
+.m-postlist .operations .edit {
+    display: inline-block;
+    border-top: 1px solid transparent;
 }
 
 .m-postlist .operations .more>a {
@@ -337,8 +361,19 @@ a:hover {
     margin-top: 5px;
 }
 
-.m-postlist .info > span {
-    margin-left: 20px;
+.m-postlist .info > span{
+    display: inline-block;
+}
+.m-postlist .info span.date {
+    width: 135px;
+    margin-left: 5px
+}
+
+.m-postlist .info span.read {
+    width: 75px;
+}
+.m-postlist .info span.comments {
+    width: 75px;
 }
 
 
@@ -525,8 +560,8 @@ a:hover {
 }
 
 .u-icon-privatepost {
-    height: 17px;
-    background-position: -6px -151px;
+    height: 12px;
+    background-position: -6px -152px;
     vertical-align: sub;
 }
 
@@ -539,17 +574,19 @@ a:hover {
 
 /* 功能: f- */
 
-.f-cb:after {
-    display: block;
-    clear: both;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
-    content: ".";
-}
-
 .f-cb {
     zoom: 1;
+}
+
+.f-cb:before,
+.f-cb:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.f-cb:after {
+    clear: both;
 }
 
 .f-fl {

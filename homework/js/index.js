@@ -107,9 +107,17 @@
         },
 
         renderPosts: function(data) {
-            var tpl = '<li>' +
+            var tpl = '<li class="f-cb private">' +
                         '<input type="checkbox" name="" id="">' +
-                        '<a href="#" class="title">{{title}}</a>' +
+                        '<!-- 问题: 列表标题需要省略号处理 -->' +
+                        '<div class="title">' +
+                            '<a href="#"><h6><i class="u-icon u-icon-privatepost"></i>{{title}}</h6></a>' +
+                            '<div class="info">' +
+                                '<span class="date">{{shortPublishDateStr}} {{publishTimeStr}}</span>' +
+                                '<span class="read">阅读量 <span class="count">{{accessCount}}</span></span>' +
+                                '<span class="comments">评论 <span class="count">{{commentCount}}</span></span>' +
+                            '</div>' +
+                        '</div>' +
                         '<div class="operations">' +
                             '<a href="#" class="edit">编辑</a>' +
                             '<div class="more">' +
@@ -120,11 +128,6 @@
                                     '<li><a href="#">置顶</a></li>' +
                                 '</ul>' +
                             '</div>' +
-                        '</div>' +
-                        '<div class="info">' +
-                            '<span class="date">{{shortPublishDateStr}} {{publishTimeStr}}</span>' +
-                            '<span class="read">阅读量 <span class="count">{{accessCount}}</span></span>' +
-                            '<span class="comments">评论 <span class="count">{{commentCount}}</span></span>' +
                         '</div>' +
                     '</li>',
                 html = '',
