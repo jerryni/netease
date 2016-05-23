@@ -23,7 +23,7 @@
         },
 
         bindDropDownEvent: function () {
-            document.onclick = function (e) {
+            _.addEvent(document.querySelectorAll('body'), 'click' ,function (e) {
                 var tar = e.target || e.srcElement;
 
                 if(tar.className.indexOf('j-operationmore') > -1 ||
@@ -32,7 +32,7 @@
                 }
 
                 _.removeClass($('.j-operationmore'), 'active');
-            };
+            });
         },
 
         bindBatchDelEvent: function () {
@@ -56,10 +56,12 @@
             var elList = $('#j-postlist')[0],
                 ids = [];
 
-            var els = elList.querySelectorAll('input:checked');
+            var els = elList.querySelectorAll('input');
 
             for(var i=0;i<els.length;i++){
-                ids.push(els[i].closest('[data-id]').getAttribute('data-id'));
+                if(els[i].checked == true) {
+                    ids.push(els[i].closest('[data-id]').getAttribute('data-id'));
+                }
             }
 
             return ids;
@@ -104,7 +106,8 @@
                 if(tar.className.indexOf('j-operationmore') > -1 ||
                     tar.parentElement.className.indexOf('j-operationmore') > -1) {
                     
-                    tar = tar.className.indexOf('j-operationmore') > -1 ? tar : tar.closest('.j-operationmore');
+                    tar = tar.className.indexOf('j-operationmore') > -1 ? 
+                        tar : tar.closest('.j-operationmore');
 
                     _.removeClass($('.j-operationmore'), 'active');
 
@@ -224,7 +227,6 @@
                     if (data === 1) {
                         alert('删除成功');
                         self.removeDeletedPost(ids);
-                        isMulti && self.loadPosts();
                     } else {
                         alert('删除失败');
                     }
@@ -235,9 +237,17 @@
 
         removeDeletedPost: function(ids) {
             var _ids = ids.split('&'),
-                elList = $('#j-postlist')[0];
+                elList = $('#j-postlist')[0],
+                i,j;
 
-            for(var i=0;i<_ids.length;i++){
+            for(i=0;i<_ids.length;i++){
+
+                // 从postData数据中移除
+                for(j=this._postData.length -1;j>=0;j--){
+                    if(this._postData[j].id == _ids[i]){
+                        this._postData.splice(j,1);
+                    }
+                }
 
                 elList.removeChild(elList
                     .querySelector('li[data-id='+ _ids[i] +']'));
@@ -264,7 +274,8 @@
             this.isEditing = true;
 
         },
-        // 添加日志
+
+        // 发布按钮
         bindAddBlog: function() {
             var self = this;
 
@@ -275,8 +286,8 @@
                     dialogText,
                     content;
 
-                title = $('#j-ipttitle').value;
-                content = $('#j-txacontent').value;
+                title = $('#j-ipttitle')[0].value;
+                content = $('#j-txacontent')[0].value;
 
                 if (!title) {
                     alert('请输入标题');
@@ -343,6 +354,8 @@
                     }
 
                 });
+
+                return false;
             });
         },
 
