@@ -2,19 +2,8 @@
 (function(_) {
     var index;
     var $ = function(selector) {
-        var els,
-            symbol = selector[0],
-            slt = selector.substring(1);
 
-        if (symbol === '#') {
-            els = document.getElementById(slt);
-        }
-
-        if (symbol === '.') {
-            els = document.getElementsByClassName(slt);
-        }
-
-        return els;
+        return document.querySelectorAll(selector);
     };
 
     var $tabContainer = $('#j-tab');
@@ -50,7 +39,7 @@
             var self = this,
                 ids;
 
-            $('#j-batchdel').onclick = function () {
+            _.addEvent($('#j-batchdel'), 'click', function () {
 
                 ids = self.getCheckedIds();
 
@@ -60,11 +49,11 @@
                 }
 
                 self.delBlogs(ids.join('&'));
-            };
+            });
         },
 
         getCheckedIds: function () {
-            var elList = $('#j-postlist'),
+            var elList = $('#j-postlist')[0],
                 ids = [];
 
             var els = elList.querySelectorAll('input:checked');
@@ -246,7 +235,7 @@
 
         removeDeletedPost: function(ids) {
             var _ids = ids.split('&'),
-                elList = $('#j-postlist');
+                elList = $('#j-postlist')[0];
 
             for(var i=0;i<_ids.length;i++){
 
@@ -380,7 +369,7 @@
                 _.removeSibingsClass(target, 'current');
 
                 // content切换
-                _.showCurrent($('#' + target.getAttribute('data-id')));
+                _.showCurrent($('#' + target.getAttribute('data-id'))[0]);
             });
         },
 
@@ -412,7 +401,7 @@
                 items: data
             });
 
-            $('#j-friendsposts').innerHTML = html;
+            $('#j-friendsposts')[0].innerHTML = html;
         },
 
         _postData: {},
@@ -446,7 +435,7 @@
                 items: data
             });
 
-            $('#j-postlist').innerHTML = html;
+            $('#j-postlist')[0].innerHTML = html;
         },
 
         resetForm: function () {
@@ -458,7 +447,7 @@
         },
 
         bindScrollList: function() {
-            var ul = $('#j-friendsposts'),
+            var ul = $('#j-friendsposts')[0],
                 height,
                 childs,
                 cLen,

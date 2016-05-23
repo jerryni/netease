@@ -3,10 +3,16 @@
     var util = {};
 
     util.addEvent = function(el, type, cb) {
-        if (el.addEventListener) {
-            el.addEventListener(type, cb, false);
-        } else {
-            el.attachEvent('on' + type, cb);
+        var i;
+
+        for (i = 0; i < el.length; i++) {
+
+
+            if (el[i].addEventListener) {
+                el[i].addEventListener(type, cb, false);
+            } else {
+                el[i].attachEvent('on' + type, cb);
+            }
         }
     };
 
@@ -46,14 +52,14 @@
         return this;
     };
 
-    util.removeClass = function (node, className) {
+    util.removeClass = function(node, className) {
         var i;
 
-        for(i=0;i < node.length;i++) {
+        for (i = 0; i < node.length; i++) {
 
-            
+
             node[i].className = node[i].className.replace(className, '');
-            
+
         }
     };
 
@@ -71,7 +77,7 @@
 
 
         this.addEvent(selectAllEl, 'click', function(e) {
-            var chks = listCon.querySelectorAll('input[type=checkbox]'),
+            var chks = listCon[0].querySelectorAll('input[type=checkbox]'),
                 len = chks.length,
                 i,
                 tar = e.srcElement || e.target;
@@ -84,7 +90,7 @@
         //列表选项的检查
         this.addEvent(listCon, 'click', function(e) {
             var tar = e.target || e.srcElement,
-                chks = listCon.querySelectorAll('input[type=checkbox]'),
+                chks = listCon[0].querySelectorAll('input[type=checkbox]'),
                 len = chks.length,
                 i;
 
@@ -92,7 +98,7 @@
 
                 // 如果是去掉勾, 那么去掉全选的勾
                 if (!tar.checked) {
-                    selectAllEl.checked = false;
+                    selectAllEl[0].checked = false;
                     return;
                 }
 
@@ -251,23 +257,23 @@
     };
 
     util.sortBy = function(arr, key) {
-        var fnCompareDate = function(a,b) {
-            
+        var fnCompareDate = function(a, b) {
+
 
             if (a[key] > b[key]) {
-                
-                return -1; 
+
+                return -1;
             }
             if (a[key] < b[key]) {
-                
-                return 1; 
+
+                return 1;
             }
 
             if (a[key] == b[key]) {
-                
-                return 0; 
-            } 
-            
+
+                return 0;
+            }
+
         };
 
         arr.sort(fnCompareDate);
