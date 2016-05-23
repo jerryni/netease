@@ -447,29 +447,38 @@
         },
 
         bindScrollList: function() {
-            var ul = $('#j-friendsposts')[0],
+            var ul = $('#j-friendsposts'),
                 height,
                 childs,
                 cLen,
                 times,
                 index = 0,
-                isHovered = false,
+                isHoverStoped = false,
                 timeId;
 
-            height = ul.clientHeight;
-            childs = ul.childNodes;
+            height = ul[0].clientHeight;
+            childs = ul[0].querySelectorAll('li');
             cLen = childs.length;
             times = cLen - 5;
 
             function move() {
 
-                if (isHovered) {
+                if (isHoverStoped) {
                     return;
                 }
 
-                _.animation(ul, 1000, 'top', index * -50, -50 * (index + 1), true, function() {
-                    timeId = setTimeout(move, 2000);
-                });
+                var params = {
+                    el: ul[0],
+                    dur: 1000,
+                    attr: 'top',
+                    from: index * -50,
+                    to: -50 * (index + 1),         
+                    cb: function() {
+                        timeId = setTimeout(move, 2000);
+                    }
+                };
+
+                _.animation(params);
 
                 index++;
 
@@ -480,12 +489,27 @@
 
             _.addEvent(ul, 'mouseenter', function() {
 
-                isHovered = true;
+                // 防止在移动的时候再次添加事件
+                if(ul[0].isMoving) {
+                    _.animationStop(ul[0]);
+                    return;
+                }
+
+                isHoverStoped = true;
                 clearTimeout(timeId);
+
             });
+
             _.addEvent(ul, 'mouseleave', function() {
-                isHovered = false;
-                timeId = setTimeout(move, 2000);
+                
+                _.animationResume(ul[0]);
+
+                // 只有在hoverStoped离开的时候, 才会重新添加定时器
+                if(isHoverStoped) {
+                    isHoverStoped = false;
+                    
+                    timeId = setTimeout(move, 2000);
+                }
             });
 
             move();

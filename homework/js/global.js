@@ -182,50 +182,86 @@
         }
     };
 
-    util.animation = function(el, dur, attr, from, to, hasHoverPaused, cb) {
+    util.animationStop = function (el) {
+
+        // 如果没在移动, 那么也就不需要停止了
+        if(!el.isMoving) {
+            return;
+        }
+
+        var params = el.moveParams,
+            distance = params.to - params.from;
+
+        var per = Math.min(1.0, (new Date - params.startTime) / params.dur);
+
+        params.dur *=  (1 - per);
+        params.from += Math.round(distance * per);
+
+        clearInterval(params.timeId);
+
+        // 通知重新开始的
+        el.neesResume = true;
+    };
+
+    util.animationResume = function (el) {
+        if(!el.neesResume) {
+            return;
+        }
+
+        util.animation(el.moveParams);
+
+        el.neesResume = false;
+    };
+
+    util.animation = function(params) {
         var timeId,
             startTime,
-            distance = to - from,
-            leftDur,
-            nowPos,
+            distance = params.to - params.from,
+            // leftDur,
+            // nowPos,
+            _el = params.el,
 
             FRAME_TIME = 13;
 
+        _el.isMoving = false;
         function move() {
 
-            var per = Math.min(1.0, (new Date - startTime) / dur);
+            _el.isMoving = true;
+            var per = Math.min(1.0, (new Date - startTime) / params.dur);
 
             if (per >= 1) {
                 clearInterval(timeId);
-                el.onmouseenter = null;
-                el.onmouseleave = null;
-                cb();
+                _el.isMoving = false;
+                params.cb && params.cb();
             } else {
-                el.style[attr] = from + Math.round(distance * per) + 'px';
+                _el.style[params.attr] = params.from + Math.round(distance * per) + 'px';
             }
         }
 
         function start() {
-            startTime = new Date;
-            timeId = setInterval(move, FRAME_TIME);
+            params.startTime = startTime = new Date;
+            params.timeId = timeId = setInterval(move, FRAME_TIME);
         }
 
-        if (hasHoverPaused) {
-            el.onmouseenter = function() {
-                var per = Math.min(1.0, (new Date - startTime) / dur);
+        // if (hasHoverPaused) {
+            // _el.onmouseenter = function() {
+            //     var per = Math.min(1.0, (new Date - startTime) / dur);
 
-                leftDur = dur * (1 - per);
-                nowPos = from + Math.round(distance * per);
+            //     leftDur = dur * (1 - per);
+            //     nowPos = from + Math.round(distance * per);
 
-                clearInterval(timeId);
-            };
+            //     clearInterval(timeId);
+            // };
 
-            el.onmouseleave = function() {
-                util.animation(el, leftDur, attr, nowPos, to, true, cb);
-
-            };
-        }
+            // _el.onmouseleave = function() {
+            //     util.animation(_el, leftDur, attr, nowPos, to, true, cb);
+            // };
+        // }
         start();
+
+        _el['moveParams'] = params;
+
+        return 
     };
 
     var tempCache = {};
