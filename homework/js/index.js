@@ -30,7 +30,20 @@
             this.bindAddBlog();
             this.bindListEvent();
             this.bindBatchDelEvent();
-            // this.bindFormReset();
+            this.bindDropDownEvent();
+        },
+
+        bindDropDownEvent: function () {
+            document.onclick = function (e) {
+                var tar = e.target || e.srcElement;
+
+                if(tar.className.indexOf('j-operationmore') > -1 ||
+                    tar.parentElement.className.indexOf('j-operationmore') > -1) {
+                    return;
+                }
+
+                _.removeClass($('.j-operationmore'), 'active');
+            };
         },
 
         bindBatchDelEvent: function () {
@@ -95,6 +108,19 @@
                     id = elLi.getAttribute('data-id');
                     self.delBlogs(id);
                     return;
+                }
+
+
+                // 更多 菜单
+                if(tar.className.indexOf('j-operationmore') > -1 ||
+                    tar.parentElement.className.indexOf('j-operationmore') > -1) {
+                    
+                    tar = tar.className.indexOf('j-operationmore') > -1 ? tar : tar.closest('.j-operationmore');
+
+                    _.removeClass($('.j-operationmore'), 'active');
+
+                    console.log(tar);
+                    _.addClass(tar, 'active');
                 }
 
                 // 置顶
@@ -426,6 +452,7 @@
         resetForm: function () {
             // $('#j-btnreset').onclick = function () {
                 document.forms['j-formpost'].reset();
+                this.editingId = null;
                 return false;
             // };
         },

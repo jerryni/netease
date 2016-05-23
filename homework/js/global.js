@@ -29,7 +29,7 @@
             return;
         }
 
-        node.className += className;
+        node.className += ' ' + className;
 
         return this;
     };
@@ -44,6 +44,17 @@
         }
 
         return this;
+    };
+
+    util.removeClass = function (node, className) {
+        var i;
+
+        for(i=0;i < node.length;i++) {
+
+            
+            node[i].className = node[i].className.replace(className, '');
+            
+        }
     };
 
     util.showCurrent = function(node) {
@@ -263,6 +274,7 @@
 
         return arr;
     };
+
 
 
     window._ = window.Util = util;

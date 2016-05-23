@@ -18,7 +18,7 @@
     <li data-id="<%= items[i].id %>" class="f-cb <%= items[i].allowView == 10000 ? 'private' : '' %> <%= items[i].rank == 1 ? 'j-attop' : '' %>">
         <input type="checkbox" name="" id="">
         <div class="title">
-            <a href="#"><h6><i class="u-icon u-icon-privatepost"></i><%= items[i].title %></h6></a>
+            <a href="javascript:;"><h6><i class="u-icon u-icon-privatepost"></i><%= items[i].title %></h6></a>
             <div class="info">
                 <span class="date"><%= items[i].shortPublishDateStr %> <%= items[i].publishTimeStr %></span>
                 <span class="read">阅读量 <span class="count"><%= items[i].accessCount %></span></span>
@@ -27,8 +27,8 @@
         </div>
         <div class="operations">
             <a href="javascript:;" class="edit j-editblog">编辑</a>
-            <div class="more">
-                <a href="#">更多</a>
+            <div class="more j-operationmore">
+                <a href="javascript:;">更多</a>
                 <i class="u-arrow down"></i>
                 <ul>
                     <li class="j-singledel"><a href="javascript:;">删除</a></li>
@@ -44,8 +44,8 @@
     <% for (var i = 0;i<items.length;i++) { %>
     <li class="f-cb">
         <img src="" class="avatar" alt="">
-        <div class="name"><a href="#"><%= items[i].userNickname %></a></div>
-        <div class="description"><a href="#"><%= items[i].title %></a></div>
+        <div class="name"><a href="javascript:;"><%= items[i].userNickname %></a></div>
+        <div class="description"><a href="javascript:;"><%= items[i].title %></a></div>
     </li>
     <% } %>
 </script>
@@ -81,13 +81,13 @@
                 <li><span>随便看看</span></li>
             </ul>
             <div class="m-usernav">
-                <a href="#" class="greet s-gray">中午好，<span class="username">testblog1</span>（<i class="u-icon u-icon-email"></i><span class="count">5</span>）</a>
+                <a href="javascript:;" class="greet s-gray">中午好，<span class="username">testblog1</span>（<i class="u-icon u-icon-email"></i><span class="count">5</span>）</a>
                 <span class="f-pipenav"></span>
                 <i class="u-icon u-icon-usercenter f-ml10"></i><span>个人中心</span>
-                <a href="#" class="f-ml10">消息（<span class="s-orange">1274</span>）</a>
-                <a href="#" class="f-ml10">反馈</a>
+                <a href="javascript:;" class="f-ml10">消息（<span class="s-orange">1274</span>）</a>
+                <a href="javascript:;" class="f-ml10">反馈</a>
                 <span class="f-pipenav"></span>
-                <a href="#" class="s-gray-1">退出</a>
+                <a href="javascript:;" class="s-gray-1">退出</a>
             </div>
         </div>
     </div>
@@ -107,18 +107,18 @@
                 <div class="m-slidenav">
                     <h3 class="navtitle"><i class="u-icon u-icon-blognews"></i>博客动态</h3>
                     <ul class="navmn">
-                        <li><a href="#">博客动态</a></li>
-                        <li><a href="#">消息中心</a></li>
+                        <li><a href="javascript:;">博客动态</a></li>
+                        <li><a href="javascript:;">消息中心</a></li>
                     </ul>
                 </div>
                 <div class="m-slidenav">
                     <h3 class="navtitle"><i class="u-icon u-icon-blogmanage"></i>博客管理</h3>
                     <div class="navmn">
                         <ul>
-                            <li><a href="#">日志管理</a></li>
-                            <li class="current"><a href="#">博友管理</a></li>
-                            <li><a href="#">博客设置</a></li>
-                            <li><a href="#">博客装扮</a></li>
+                            <li><a href="javascript:;">日志管理</a></li>
+                            <li class="current"><a href="javascript:;">博友管理</a></li>
+                            <li><a href="javascript:;">博客设置</a></li>
+                            <li><a href="javascript:;">博客装扮</a></li>
                         </ul>
                     </div>
                 </div>
@@ -126,8 +126,8 @@
                     <h3 class="navtitle"><i class="u-icon u-icon-service"></i>服务</h3>
                     <div class="navmn">
                         <ul>
-                            <li><a href="#">博客动态</a></li>
-                            <li><a href="#">消息中心</a></li>
+                            <li><a href="javascript:;">博客动态</a></li>
+                            <li><a href="javascript:;">消息中心</a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                                     <input type="checkbox" name="" id="">
 
                                     <div class="title">
-                                    <a href="#"><h6><i class="u-icon u-icon-privatepost"></i>js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则</h6></a>
+                                    <a href="javascript:;"><h6><i class="u-icon u-icon-privatepost"></i>js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则</h6></a>
                                         <div class="info">
                                             <span class="date">2010-06-23 11:36</span>
                                             <span class="read">阅读量 <span class="count">11</span></span>
@@ -161,13 +161,13 @@
                                         </div>
                                     </div>
                                     <div class="operations">
-                                        <a href="#" class="edit">编辑</a>
-                                        <div class="more">
-                                            <a href="#">更多</a>
+                                        <a href="javascript:;" class="edit">编辑</a>
+                                        <div class="more j-operationmore">
+                                            <a href="javascript:;">更多</a>
                                             <i class="u-arrow down"></i>
                                             <ul>
-                                                <li><a href="#">删除</a></li>
-                                                <li><a href="#">置顶</a></li>
+                                                <li><a href="javascript:;">删除</a></li>
+                                                <li><a href="javascript:;">置顶</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
                                     <input type="checkbox" name="" id="">
 
                                     <div class="title">
-                                        <a href="#"><h6>js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则</h6></a>
+                                        <a href="javascript:;"><h6>js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则js高性能原则</h6></a>
                                         <div class="info">
                                             <span class="date">2010-06-23 11:36</span>
                                             <span class="read">阅读量 <span class="count">11</span></span>
@@ -184,13 +184,13 @@
                                         </div>
                                     </div>
                                     <div class="operations">
-                                        <a href="#" class="edit">编辑</a>
+                                        <a href="javascript:;" class="edit">编辑</a>
                                         <div class="more">
-                                            <a href="#">更多</a>
+                                            <a href="javascript:;">更多</a>
                                             <i class="u-arrow down"></i>
                                             <ul>
-                                                <li><a href="#">删除</a></li>
-                                                <li><a href="#">置顶</a></li>
+                                                <li><a href="javascript:;">删除</a></li>
+                                                <li><a href="javascript:;">置顶</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -214,20 +214,20 @@
                     <div class="m-scrolllist">
                         <ul id="j-friendsposts">
                             <li class="f-cb"><img src="" class="avatar" alt="">
-                                <div class="name"><a href="#">悟空空</a></div>
-                                <div class="description"><a href="#">向服务器发不跳转的统计请求</a></div>
+                                <div class="name"><a href="javascript:;">悟空空</a></div>
+                                <div class="description"><a href="javascript:;">向服务器发不跳转的统计请求</a></div>
                             </li>
                             <li class="f-cb"><img src="" class="avatar" alt="">
-                                <div class="name"><a href="#">悟空空</a></div>
-                                <div class="description"><a href="#">禁用网页的鼠标右键功能</a></div>
+                                <div class="name"><a href="javascript:;">悟空空</a></div>
+                                <div class="description"><a href="javascript:;">禁用网页的鼠标右键功能</a></div>
                             </li>
                             <li class="f-cb"><img src="" class="avatar" alt="">
-                                <div class="name"><a href="#">悟空空</a></div>
-                                <div class="description"><a href="#">厦门游的一些准备工作</a></div>
+                                <div class="name"><a href="javascript:;">悟空空</a></div>
+                                <div class="description"><a href="javascript:;">厦门游的一些准备工作</a></div>
                             </li>
                             <li class="f-cb"><img src="" class="avatar" alt="">
-                                <div class="name"><a href="#">悟空空</a></div>
-                                <div class="description"><a href="#">结婚誓盟</a></div>
+                                <div class="name"><a href="javascript:;">悟空空</a></div>
+                                <div class="description"><a href="javascript:;">结婚誓盟</a></div>
                             </li>
                         </ul>
                     </div>
@@ -237,14 +237,14 @@
     </div>
     <div class="g-footer">
         <div class="m-footer">
-            <a href="#">公司简介</a>
-            <a href="#">联系方法</a>
-            <a href="#">招聘信息</a>
-            <a href="#">客户服务</a>
-            <a href="#">相关法律</a>
-            <a href="#">博客风格</a>
-            <a href="#">手机博客</a>
-            <a href="#"><i class="u-icon u-icon-rss"></i>订阅此博客</a>
+            <a href="javascript:;">公司简介</a>
+            <a href="javascript:;">联系方法</a>
+            <a href="javascript:;">招聘信息</a>
+            <a href="javascript:;">客户服务</a>
+            <a href="javascript:;">相关法律</a>
+            <a href="javascript:;">博客风格</a>
+            <a href="javascript:;">手机博客</a>
+            <a href="javascript:;"><i class="u-icon u-icon-rss"></i>订阅此博客</a>
 
             <!-- 公司版权 应该用&copy; -->
             <p>网易公司版权所有 &copy;1997-2016</p>

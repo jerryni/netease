@@ -312,15 +312,15 @@ a:hover {
     border-top: 1px solid transparent;
 }
 
-.m-postlist .operations .more>a {
-    cursor: default;
+.m-postlist .operations .more:hover {
+    cursor: pointer;
 }
 
-.m-postlist .operations .more:hover {
+.m-postlist .operations .more.active {
     border-color: #c8d9e3;
 }
 
-.m-postlist .operations .more:hover ul {
+.m-postlist .operations .more.active ul {
     display: block;
 }
 
