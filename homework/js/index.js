@@ -63,7 +63,7 @@
             return ids;
         },
 
-
+        editingId: null,
         bindListEvent: function () {
             var elPostList = $('#j-postlist'),
                 self = this;
@@ -82,6 +82,7 @@
                     id = elLi.getAttribute('data-id');
                     data = self.getDataById(id);
                     self.renderToEditForm(data);
+                    self.editingId = id;
                     return;
                 }
 
@@ -103,10 +104,91 @@
                     elLi = tar.closest('[data-id]');
 
                     id = elLi.getAttribute('data-id');
-                    alert('置顶');
+                    
                     self.totop(id);
                     return;
                 }
+
+                // 取消置顶
+                if(tar.className.indexOf('j-canceltop') > -1 ||
+                    tar.parentElement.className.indexOf('j-canceltop') > -1) {
+
+                    elLi = tar.closest('[data-id]');
+
+                    id = elLi.getAttribute('data-id');
+                    
+                    self.canceltop(id);
+                    return;
+                }
+            });
+        },
+
+        canceltop: function (id) {
+            var self = this;
+
+            function successCb() {
+                self._postData.forEach(function (item) {
+                    if(item.id == id) {
+
+                        item.rank = 0;
+                        return false;
+                    }
+                });
+
+                self.sortData(self._postData, 'modifyTime');
+                self.renderPosts(self._postData);    
+            }
+            
+
+            _.ajax({
+                url: 'data/untopBlog.json',
+                params: {
+                    id: id
+                },
+                success: function(data) {
+                    if (data === 1) {
+                        alert('取消置顶成功');
+                        successCb();
+                    } else {
+                        alert('取消置顶失败');
+                    }
+                }
+
+            });
+
+            
+        },
+
+        totop: function (id) {
+            var self = this;
+
+            function successCb() {
+                self._postData.forEach(function (item) {
+                    if(item.id == id) {
+
+                        item.rank = 1;
+                        return false;
+                    }
+                });
+
+                self.sortData(self._postData, 'modifyTime');
+                self.renderPosts(self._postData);
+            }
+
+            _.ajax({
+                url: 'data/topBlog.json',
+                params: {
+                    id: id
+                },
+                success: function(data) {
+                    if (data === 1) {
+                        alert('置顶成功');
+                        successCb();
+                    } else {
+                        alert('置顶失败');
+                    }
+                }
+
             });
         },
 
@@ -157,11 +239,15 @@
             return result;
         },
 
+        isEditing: false,
         renderToEditForm: function (data) {
             var _data = data[0];
 
             $('#j-ipttitle').value = _data.title;
             $('#j-txacontent').value = _data.blogContent;
+
+            this.isEditing = true;
+
         },
         // 添加日志
         bindAddBlog: function() {
@@ -170,6 +256,8 @@
             _.addEvent($('#j-addblog'), 'click', function() {
                 var params = {},
                     title,
+                    url,
+                    dialogText,
                     content;
 
                 title = $('#j-ipttitle').value;
@@ -182,34 +270,71 @@
                 if (!content) {
                     alert('请输入内容');
                     return;
+                } 
+
+                // 判断是添加还是修改
+                if(self.editingId) {
+                    url = 'data/editBlog.json';
+                    dialogText = '修改';
+
+                    self.editingId && self._postData.forEach(function(item, index){
+                        if(item.id == self.editingId) {
+                            params = item;
+                            self._postData.splice(index, 1);
+                            return false;
+                        }
+                    });
+
+                    params.title = title;
+                    params.blogContent = content;
+                    params.modifyTime = new Date().getTime();
+
+                } else {
+                    url = 'data/addBlog.json';
+                    dialogText = '添加';
+                    params = {
+                        title: title, //日志标题
+                        blogContent: content, //日志内容
+                        // modifyTime: 'xxxxx', //日志创建时间
+                        accessCount: 0, //阅读数
+                        allowView: -100, //阅读权限
+                        classId: 'xxxxxxxxx', //日志分类
+                        commentCount: 0, //日志评论数
+                        id: this.editingId || new Date().getTime(), //日志ID,客户端随机生成
+                        userId: 126770605, //用户ID
+                        userName: 'testblog1', //用户名
+                        userNickname: 'testblog' //用户昵称
+                    };
                 }
-                params = {
-                    title: title, //日志标题
-                    blogContent: content, //日志内容
-                    // modifyTime: 'xxxxx', //日志创建时间
-                    accessCount: 0, //阅读数
-                    allowView: -100, //阅读权限
-                    classId: 'xxxxxxxxx', //日志分类
-                    commentCount: 0, //日志评论数
-                    id: 'xxxxxxxxxxx', //日志ID,客户端随机生成
-                    userId: 126770605, //用户ID
-                    userName: 'testblog1', //用户名
-                    userNickname: 'testblog' //用户昵称
-                };
+
+
                 _.ajax({
-                    url: 'data/addBlog.json',
+                    url: url,
                     params: params,
                     success: function(data) {
                         if (data === 1) {
-                            alert('添加成功');
+                            alert(dialogText + '成功');
+                            
+                            // 修改dom
+                            self._postData.push(params);
+                            self.sortData(self._postData, 'modifyTime');
+                            self.renderPosts(self._postData);
+
                             self.resetForm();
+                            self.editingId = null;
                         } else {
-                            alert('添加失败');
+                            alert(dialogText + '失败');
                         }
                     }
 
                 });
             });
+        },
+
+        // 按照key进行排序, rank优先级最高
+        sortData: function (data) {
+            _.sortBy(data, 'modifyTime');
+            _.sortBy(data, 'rank');
         },
 
         initTab: function($con) {
@@ -280,6 +405,9 @@
                     }
 
                     self._postData = data;
+                    // console.log(data);
+                    self.sortData(data, 'modifyTime');
+                    // console.log(data);
                     self.renderPosts(data);
                 }
             });

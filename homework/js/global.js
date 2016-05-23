@@ -77,7 +77,7 @@
                 len = chks.length,
                 i;
 
-            if (tar.type.toUpperCase() === 'CHECKBOX') {
+            if (tar.type && tar.type.toUpperCase() === 'CHECKBOX') {
 
                 // 如果是去掉勾, 那么去掉全选的勾
                 if (!tar.checked) {
@@ -98,14 +98,14 @@
     };
 
     /* obj => a=xx&&b=yy */
-    util.objToParams = function (obj) {
+    util.objToParams = function(obj) {
         var str = '';
-        for(var key in obj) {
-            if(!obj.hasOwnProperty(key)){
+        for (var key in obj) {
+            if (!obj.hasOwnProperty(key)) {
                 continue;
             }
 
-            if(str !== '') {
+            if (str !== '') {
                 str += '&';
             }
 
@@ -117,13 +117,13 @@
 
     util.ajax = function(option) {
         var _opt = {
-            type: 'GET'
-        },
-        data = '';
+                type: 'GET'
+            },
+            data = '';
 
         this.extend(_opt, option);
-        
-        if(option.data){
+
+        if (option.data) {
             data = util.objToParams(option.data);
         }
 
@@ -133,10 +133,10 @@
 
             if (xhr.readyState === 4) {
                 if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || xhr.status === 0) {
-                    
+
                     try {
                         serverData = JSON.parse(xhr.responseText);
-                    } catch(e){
+                    } catch (e) {
                         console.log('ajax json parse error:', e);
                     }
 
@@ -239,6 +239,31 @@
         return data ? fn(data) : fn;
     };
 
+    util.sortBy = function(arr, key) {
+        var fnCompareDate = function(a,b) {
+            
+
+            if (a[key] > b[key]) {
+                
+                return -1; 
+            }
+            if (a[key] < b[key]) {
+                
+                return 1; 
+            }
+
+            if (a[key] == b[key]) {
+                
+                return 0; 
+            } 
+            
+        };
+
+        arr.sort(fnCompareDate);
+
+        return arr;
+    };
+
 
     window._ = window.Util = util;
 
@@ -256,4 +281,3 @@
 
     window.API = api;
 })();
-

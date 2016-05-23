@@ -15,7 +15,7 @@
 <!--模板引擎-->
 <script type="text/tmpl" id="tmplpostlist">
 <% for (var i = 0;i<items.length;i++) { %>
-    <li data-id="<%= items[i].id %>" class="f-cb <%= items[i].allowView == 10000 ? 'private' : '' %> ">
+    <li data-id="<%= items[i].id %>" class="f-cb <%= items[i].allowView == 10000 ? 'private' : '' %> <%= items[i].rank == 1 ? 'j-attop' : '' %>">
         <input type="checkbox" name="" id="">
         <div class="title">
             <a href="#"><h6><i class="u-icon u-icon-privatepost"></i><%= items[i].title %></h6></a>
@@ -33,6 +33,7 @@
                 <ul>
                     <li class="j-singledel"><a href="javascript:;">删除</a></li>
                     <li class="j-totop"><a href="javascript:;">置顶</a></li>
+                    <li class="j-canceltop"><a href="javascript:;">取消置顶</a></li>
                 </ul>
             </div>
         </div>

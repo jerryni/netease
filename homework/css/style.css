@@ -9,13 +9,6 @@ a:hover {
     color: #21759b;
 }
 
-.u-icon {
-    display: inline-block;
-    width: 17px;
-    background: url(../images/sprites.png);
-    margin: 0 2px;
-}
-
 
 /* 布局: .g- */
 
@@ -294,7 +287,7 @@ a:hover {
     border-bottom: 1px dotted #d8e0e5;
 }
 
-.m-postlist >li input {
+.m-postlist >li  input {
     float: left;
     margin-right: 5px;
 }
@@ -347,6 +340,7 @@ a:hover {
     display: block;
     padding: 4px;
     width: 47px;
+    white-space: nowrap;
 }
 
 .m-postlist .operations ul li:hover {
@@ -371,6 +365,16 @@ a:hover {
 }
 .m-postlist .info span.comments {
     width: 75px;
+}
+
+.m-postlist >li .operations .j-canceltop{
+    display: none;
+}
+.m-postlist >li.j-attop .operations .j-totop{
+    display: none;
+}
+.m-postlist >li.j-attop .operations .j-canceltop{
+    display: block;
 }
 
 
@@ -519,6 +523,12 @@ a:hover {
 
 
 /* 问题: 这2个是需要提取出基类的 */
+.u-icon {
+    display: inline-block;
+    width: 17px;
+    background: url(../images/sprites.png);
+    margin: 0 2px;
+}
 
 .u-arrow {
     margin-left: 3px;
